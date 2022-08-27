@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'cusromers/index'
-    get 'cusromers/show'
-    get 'cusromers/edit'
-  end
 
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -16,4 +11,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  scope module: :public do
+    resources :customers, except: [:new]
+    # get 'cusromers/index'
+    # get 'cusromers/show'
+    # get 'cusromers/edit'
+  end
 end
