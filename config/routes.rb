@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'cusromers/index'
+    get 'cusromers/show'
+    get 'cusromers/edit'
+  end
 
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
